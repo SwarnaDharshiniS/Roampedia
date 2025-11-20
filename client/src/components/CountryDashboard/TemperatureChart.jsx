@@ -42,26 +42,30 @@ export default function TemperatureChart({ weather, latlng }) {
       setError(null);
 
       if (weather && weather.daily && weather.daily.time) {
-        // Use provided daily arrays.
-        const days = weather.daily.time.slice(0, 6); // include today + next 5
-        const max = weather.daily.temperature_2m_max ? weather.daily.temperature_2m_max.slice(0, 6) : [];
-        const min = weather.daily.temperature_2m_min ? weather.daily.temperature_2m_min.slice(0, 6) : [];
+        const days = weather.daily.time.slice(0, 6);
+        const max = weather.daily.temperature_2m_max
+          ? weather.daily.temperature_2m_max.slice(0, 6)
+          : [];
+        const min = weather.daily.temperature_2m_min
+          ? weather.daily.temperature_2m_min.slice(0, 6)
+          : [];
         if (mounted) setFiveday({ dates: days, max, min });
         return;
       }
 
-      // Otherwise, fetch a short forecast from Open-Meteo if latlng available.
+      // Fetch forecast using lat/lon if needed
       if (latlng && latlng.length === 2) {
         try {
           setFetching(true);
           const [lat, lon] = latlng;
-          // Request daily temps for next 6 days (today + 5)
           const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min&timezone=UTC&forecast_days=6`;
           const resp = await axios.get(url);
           const d = resp.data;
+
           const days = d.daily?.time || [];
           const max = d.daily?.temperature_2m_max || [];
           const min = d.daily?.temperature_2m_min || [];
+
           if (mounted) setFiveday({ dates: days, max, min });
         } catch (e) {
           console.warn("TemperatureChart fetch error:", e);
@@ -70,20 +74,20 @@ export default function TemperatureChart({ weather, latlng }) {
           if (mounted) setFetching(false);
         }
       } else {
-        // no data
         setFiveday(null);
       }
     }
 
     ensureData();
-
     return () => {
       mounted = false;
     };
   }, [weather, latlng]);
 
+  // Chart data
   const chartData = useMemo(() => {
     if (!fiveday) return null;
+
     const labels = fiveday.dates.map((d) => {
       try {
         return new Date(d).toLocaleDateString();
@@ -100,28 +104,49 @@ export default function TemperatureChart({ weather, latlng }) {
           data: fiveday.max.map((v) => (v == null ? null : Number(v))),
           tension: 0.3,
           fill: false,
+          borderColor: "#f80606ff",     // WHITE trend line
+          backgroundColor: "#ff0000ff",
+          borderWidth: 2,
+          pointRadius: 0,
         },
         {
           label: "Min °C",
           data: fiveday.min.map((v) => (v == null ? null : Number(v))),
           tension: 0.3,
           fill: false,
+          borderColor: "#0421fcff",     // WHITE trend line
+          backgroundColor: "#2605faff",
+          borderWidth: 2,
+          pointRadius: 0,
         },
       ],
     };
   }, [fiveday]);
 
+  // Chart options (white text everywhere)
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { position: "top" },
+      legend: {
+        position: "top",
+        labels: { color: "#FFFFFF" },
+      },
       title: { display: false },
+      tooltip: {
+        bodyColor: "#FFFFFF",
+        titleColor: "#FFFFFF",
+      },
     },
     scales: {
+      x: {
+        ticks: { color: "#FFFFFF" },
+        grid: { color: "rgba(255,255,255,0.1)" },
+      },
       y: {
-        title: { display: true, text: "°C" },
-        ticks: { beginAtZero: false },
+        title: { display: true, text: "°C", color: "#FFFFFF" },
+        ticks: { beginAtZero: false, color: "#FFFFFF" },
+        grid: { color: "rgba(255,255,255,0.1)" },
       },
     },
   };
@@ -135,9 +160,7 @@ export default function TemperatureChart({ weather, latlng }) {
         {!chartData && !fetching && !error && (
           <div className="muted">No forecast data available</div>
         )}
-        {chartData && (
-          <Line data={chartData} options={options} />
-        )}
+        {chartData && <Line data={chartData} options={options} />}
       </div>
     </div>
   );
