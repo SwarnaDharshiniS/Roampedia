@@ -1,0 +1,91 @@
+/* =========================================================
+   CurrencyConverter.css – Earthy Mini Card
+   ========================================================= */
+
+.simple-converter {
+  width: 100%;
+  max-width: 380px;
+  margin: 12px 0;
+  padding: 16px 16px 14px;
+  background: linear-gradient(135deg, #ffffff, #e0f2fe);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+/* Heading */
+.headline {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #1e293b;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.big-rate {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #065f46;
+  margin-bottom: 12px;
+}
+
+/* Layout */
+.converter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Row box */
+.row-box {
+  background: #f9fafb;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.row-box:hover {
+  box-shadow: 0 10px 24px rgba(56, 189, 248, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Amount */
+.amount-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  width: 140px;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Currency select */
+.currency-select {
+  background: rgba(239, 246, 255, 0.9);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  padding: 6px 10px;
+  outline: none;
+  font-size: 0.86rem;
+  color: #1f2937;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Meta */
+.converter-meta {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #6b7280;
+  display: flex;
+  justify-content: space-between;
+}

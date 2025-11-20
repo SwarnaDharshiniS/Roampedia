@@ -1,0 +1,243 @@
+/* ========================================
+   TRAVEL INSIGHTS - Enhanced Styling
+   ======================================== */
+
+.travel-insights-card {
+  margin-bottom: 20px;
+}
+
+.travel-insights-card .card-body {
+  padding: 20px;
+}
+
+/* Summary Stats Section */
+.insights-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.insight-stat {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.insight-stat:hover {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(96, 165, 250, 0.25);
+  transform: translateY(-2px);
+}
+
+.insight-stat .stat-icon {
+  font-size: 2rem;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.insight-stat .stat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.insight-stat .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #F0F9FF;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.insight-stat .stat-label {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Chart Section */
+.insights-chart-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+}
+
+.chart-title {
+  margin: 0 0 16px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #E0E7FF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Experiences Preview Section */
+.insights-experiences {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+}
+
+.experiences-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.experience-preview {
+  background: rgba(30, 41, 59, 0.3);
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  border-radius: 10px;
+  padding: 14px;
+  transition: all 0.2s ease;
+}
+
+.experience-preview:hover {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.exp-rating {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #FCD34D;
+}
+
+.exp-themes {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  background: rgba(96, 165, 250, 0.1);
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exp-snippet {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #CBD5E1;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Footer */
+.insights-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(96, 165, 250, 0.08);
+  text-align: center;
+}
+
+.insights-footer .muted {
+  color: #64748B;
+}
+
+.insights-footer .small {
+  font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .insights-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .insight-stat {
+    padding: 12px;
+  }
+
+  .insight-stat .stat-icon {
+    font-size: 1.5rem;
+  }
+
+  .insight-stat .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .insight-stat .stat-label {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .insights-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   NEWS FEED - Enhanced Text Display
+   ======================================== */
+
+.news-item .news-info h4 {
+  color: #F0F9FF !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-weight: 600 !important;
+  margin-bottom: 6px !important;
+}
+
+.news-item .news-info p {
+  color: #CBD5E1 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.news-date {
+  margin-top: 8px !important;
+  font-size: 0.75rem !important;
+  color: #94A3B8 !important;
+}
+
+/* Ensure news text is readable */
+.news-info * {
+  text-shadow: none !important;
+}
+
+/* ========================================
+   BEST TIME TO VISIT - Spacing Fix
+   ======================================== */
+
+.best-time-card {
+  margin-bottom: 20px;
+}
+
+.best-time-card .chart-container {
+  margin: 16px 0;
+  min-height: 250px;
+}
+
+.best-time-card .summary-text {
+  color: #CBD5E1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.best-time-card .note {
+  color: #64748B;
+  font-size: 0.75rem;
+  margin-top: 12px;
+  text-align: center;
+  font-style: italic;
+}
