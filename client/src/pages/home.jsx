@@ -115,13 +115,6 @@ const WorldExplorerLanding = () => {
           </p>
           
           <div className="hero-buttons">
-            <button 
-              onClick={() => scrollToSection('features')}
-              className="btn-primary"
-            >
-              <Play size={20} />
-              Start Exploring
-            </button>
             <Link to="/map" className="btn-secondary">
             <Globe size={20} />
             Explore the Interactive Map

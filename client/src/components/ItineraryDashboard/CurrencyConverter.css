@@ -1,91 +1,119 @@
 /* =========================================================
-   CurrencyConverter.css – Earthy Mini Card
+   CurrencyConverter.css – Midnight Purple Mini Card
    ========================================================= */
 
 .simple-converter {
   width: 100%;
   max-width: 380px;
-  margin: 12px 0;
-  padding: 16px 16px 14px;
-  background: linear-gradient(135deg, #ffffff, #e0f2fe);
+  margin: 0 0 20px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffffff, #f5f3fb);
   border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 8px 24px rgba(42, 30, 77, 0.12);
+  border: 1px solid rgba(138, 118, 178, 0.25);
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  color: #0f172a;
+  color: #1a1528;
 }
 
 /* Heading */
 .headline {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  margin-bottom: 6px;
-  color: #1e293b;
+  margin-bottom: 8px;
+  color: #6b6484;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .big-rate {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 800;
-  color: #065f46;
-  margin-bottom: 12px;
+  color: #2a1e4d;
+  margin-bottom: 16px;
+  line-height: 1.2;
 }
 
 /* Layout */
 .converter-box {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* Row box */
 .row-box {
-  background: #f9fafb;
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: white;
+  border: 2px solid rgba(138, 118, 178, 0.2);
   border-radius: 12px;
-  padding: 10px 14px;
+  padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  transition: box-shadow 0.18s ease, transform 0.18s ease;
+  transition: all 0.3s ease;
 }
 
 .row-box:hover {
-  box-shadow: 0 10px 24px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 4px 16px rgba(90, 74, 143, 0.2);
+  border-color: #5a4a8f;
   transform: translateY(-1px);
 }
 
-/* Amount */
+/* Amount input */
 .amount-input {
   background: transparent;
   border: none;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   width: 140px;
-  color: #111827;
+  color: #1a1528;
   font-weight: 600;
+}
+
+.amount-input::placeholder {
+  color: #d4d0e3;
 }
 
 /* Currency select */
 .currency-select {
-  background: rgba(239, 246, 255, 0.9);
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  padding: 6px 10px;
+  background: rgba(245, 243, 251, 0.95);
+  border-radius: 10px;
+  border: 1px solid rgba(138, 118, 178, 0.3);
+  padding: 8px 12px;
   outline: none;
-  font-size: 0.86rem;
-  color: #1f2937;
+  font-size: 0.9rem;
+  color: #2a1e4d;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.currency-select:hover {
+  background: rgba(232, 228, 243, 0.95);
+  border-color: #5a4a8f;
+}
+
+.currency-select:focus {
+  border-color: #2a1e4d;
+  box-shadow: 0 0 0 3px rgba(42, 30, 77, 0.1);
 }
 
 /* Meta */
 .converter-meta {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: #6b6484;
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .simple-converter {
+    max-width: 100%;
+  }
+  
+  .amount-input {
+    width: 120px;
+    font-size: 1.1rem;
+  }
 }

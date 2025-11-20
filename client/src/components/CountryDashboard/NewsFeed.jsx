@@ -71,14 +71,11 @@ const NewsFeed = ({ articles: externalArticles = null, standalone = false, count
               📰 No recent news available
             </div>
           )}
-          {articles.slice(0, 4).map((a, i) => {
+          {articles.slice(0, 3).map((a, i) => {
             const title = a.title || "Untitled";
-            const description = a.description || (a.content ? a.content.slice(0, 120) + "..." : "No description available");
+            const description = a.description || (a.content ? a.content.slice(0, 1) + "..." : "No description available");
             const date = a.pubDate ? new Date(a.pubDate).toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
+              month: 'short'
             }) : "";
             
             return (
@@ -171,7 +168,7 @@ const NewsFeed = ({ articles: externalArticles = null, standalone = false, count
                       color: '#94A3B8',
                       fontSize: '0.85rem',
                       marginTop: '4px'
-                    }}>🕒 {date}</div>
+                    }}></div>
                   )}
                 </div>
               </a>
@@ -227,7 +224,6 @@ const NewsFeed = ({ articles: externalArticles = null, standalone = false, count
               )}
               <div className="news-content">
                 <h3>{article.title}</h3>
-                <p>{article.description || "No description available."}</p>
                 <a
                   href={article.link}
                   target="_blank"

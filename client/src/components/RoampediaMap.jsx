@@ -5,9 +5,6 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import CountryDashboard from "./CountryDashboard/CountryDashboard";
 import "./RoampediaMap.css";
-import ExperienceModal from "./CountryDashboard/ExperienceModal";
-import AddExperienceForm from "./CountryDashboard/AddExperienceForm";
-
 mapboxgl.accessToken = "pk.eyJ1Ijoic3JpamFuYW5pMjA3MyIsImEiOiJjbWg4emNwcWQxNHdsMmlzNWU1OHgxa2xkIn0.2M6rf1vKlgeWShhOhqI-OQ";
 
 export default function RoampediaMap({ userId = "user_123" }) {
@@ -178,23 +175,7 @@ export default function RoampediaMap({ userId = "user_123" }) {
 
   return (
     <div className="roampedia-container">
-      {/* Header */}
-      <div className="topbar">
-        <h1 className="logo">🌍 Roampedia</h1>
-        <div className="controls">
-          <label className="journey-toggle">
-            Journey Mode
-            <input
-              type="checkbox"
-              checked={journeyMode}
-              onChange={(e) => setJourneyMode(e.target.checked)}
-            />
-          </label>
-        </div>
-      </div>
-
-      {/* Map */}
-      <div id="map" className="map-area" ref={mapContainer}></div>
+    <div id="map" className="map-area" ref={mapContainer}></div>
 
       {/* Tooltip */}
       {hoverInfo && (

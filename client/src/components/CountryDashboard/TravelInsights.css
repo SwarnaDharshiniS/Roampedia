@@ -1,6 +1,27 @@
 /* ========================================
-   TRAVEL INSIGHTS - Enhanced Styling
+   TRAVEL INSIGHTS - Purple Professional Theme
    ======================================== */
+
+:root {
+  /* Primary Colors */
+  --primary-purple: #1f163d;
+  --deep-purple: #030d2b;
+  --accent-purple: #c2badd;
+  
+  /* Background Colors */
+  --light-lavender: #e8e4f3;
+  --soft-lavender: #f5f3fb;
+  --glass-white: rgba(255, 255, 255, 0.85);
+  --cloud-lavender: #d4d0e3;
+  
+  /* Text Colors */
+  --ink: #1a1528;
+  --muted: #ccc5e1;
+  
+  /* Borders & Shadows */
+  --border: rgba(138, 118, 178, 0.3);
+  --card-shadow: 0 20px 45px rgba(42, 30, 77, 0.25);
+}
 
 .travel-insights-card {
   margin-bottom: 20px;
@@ -19,8 +40,8 @@
 }
 
 .insight-stat {
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(96, 165, 250, 0.15);
+  background: rgba(90, 74, 143, 0.12);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -30,8 +51,8 @@
 }
 
 .insight-stat:hover {
-  background: rgba(59, 130, 246, 0.12);
-  border-color: rgba(96, 165, 250, 0.25);
+  background: rgba(90, 74, 143, 0.18);
+  border-color: rgba(138, 118, 178, 0.5);
   transform: translateY(-2px);
 }
 
@@ -49,14 +70,14 @@
 .insight-stat .stat-value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #F0F9FF;
+  color: var(--soft-lavender);
   margin-bottom: 4px;
   line-height: 1;
 }
 
 .insight-stat .stat-label {
   font-size: 0.75rem;
-  color: #94A3B8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 600;
@@ -67,14 +88,14 @@
 .insights-chart-section {
   margin-top: 24px;
   padding-top: 20px;
-  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  border-top: 1px solid var(--border);
 }
 
 .chart-title {
   margin: 0 0 16px 0;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #E0E7FF;
+  color: var(--accent-purple);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -83,7 +104,7 @@
 .insights-experiences {
   margin-top: 24px;
   padding-top: 20px;
-  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  border-top: 1px solid var(--border);
 }
 
 .experiences-list {
@@ -93,16 +114,16 @@
 }
 
 .experience-preview {
-  background: rgba(30, 41, 59, 0.3);
-  border: 1px solid rgba(96, 165, 250, 0.1);
+  background: rgba(42, 30, 77, 0.3);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px;
   transition: all 0.2s ease;
 }
 
 .experience-preview:hover {
-  background: rgba(59, 130, 246, 0.08);
-  border-color: rgba(96, 165, 250, 0.2);
+  background: rgba(90, 74, 143, 0.2);
+  border-color: rgba(138, 118, 178, 0.5);
 }
 
 .exp-header {
@@ -117,13 +138,13 @@
 .exp-rating {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #FCD34D;
+  color: #fcd34d;
 }
 
 .exp-themes {
   font-size: 0.75rem;
-  color: #94A3B8;
-  background: rgba(96, 165, 250, 0.1);
+  color: var(--muted);
+  background: rgba(90, 74, 143, 0.15);
   padding: 4px 10px;
   border-radius: 12px;
   text-transform: uppercase;
@@ -133,7 +154,7 @@
 .exp-snippet {
   margin: 0;
   font-size: 0.85rem;
-  color: #CBD5E1;
+  color: var(--soft-lavender);
   line-height: 1.5;
   font-style: italic;
 }
@@ -142,12 +163,12 @@
 .insights-footer {
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid rgba(96, 165, 250, 0.08);
+  border-top: 1px solid var(--border);
   text-align: center;
 }
 
 .insights-footer .muted {
-  color: #64748B;
+  color: var(--muted);
 }
 
 .insights-footer .small {
@@ -188,7 +209,7 @@
    ======================================== */
 
 .news-item .news-info h4 {
-  color: #F0F9FF !important;
+  color: var(--soft-lavender) !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -197,7 +218,7 @@
 }
 
 .news-item .news-info p {
-  color: #CBD5E1 !important;
+  color: var(--muted) !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -206,7 +227,7 @@
 .news-date {
   margin-top: 8px !important;
   font-size: 0.75rem !important;
-  color: #94A3B8 !important;
+  color: var(--muted) !important;
 }
 
 /* Ensure news text is readable */
@@ -228,14 +249,14 @@
 }
 
 .best-time-card .summary-text {
-  color: #CBD5E1;
+  color: var(--soft-lavender);
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 16px;
 }
 
 .best-time-card .note {
-  color: #64748B;
+  color: var(--muted);
   font-size: 0.75rem;
   margin-top: 12px;
   text-align: center;

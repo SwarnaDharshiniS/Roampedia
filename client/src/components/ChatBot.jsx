@@ -1,6 +1,6 @@
 // Chatbot.jsx
 import React, { useState, useRef, useEffect } from "react";
-import "./ChatBot.css";
+// import "./ChatBot.css";
 
 export default function Chatbot({ apiUrl = `${import.meta.env.VITE_API_BASE_URL}/api/chat` }) {
   const [messages, setMessages] = useState([

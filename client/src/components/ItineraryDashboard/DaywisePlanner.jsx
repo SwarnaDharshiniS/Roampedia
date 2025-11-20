@@ -66,35 +66,44 @@ export default function DaywisePlanner({ destination, departureDate, returnDate 
     }
   }, [destination, departureDate, returnDate]);
 
-  if (loading) return <p>Loading attractions...</p>;
+  if (loading) return <p className="planner-loading">Loading attractions...</p>;
 
   return (
-    <div className="daywise-planner">
+    <div className="planner-wrapper">
+      <h2 className="planner-title">Day-wise Itinerary</h2>
 
       {days.length === 0 ? (
-        <p>No attractions found for {destination}.</p>
+        <p className="planner-empty">No attractions found for {destination}.</p>
       ) : (
-        days.map((day) => (
-          <div key={day.day} className="day-card">
-            <h3>Day {day.day} — {day.date}</h3>
+        <div className="planner-days">
+          {days.map((day) => (
+            <div key={day.day} className="planner-day-card">
+              <h3 className="planner-day-title">
+                Day <span>{day.day}</span> • {new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
+              </h3>
 
-            {day.items.length === 0 ? (
-              <p>No attractions for this day.</p>
-            ) : (
-              <ul>
-                {day.items.map((a) => (
-                  <li key={a._id} className="attraction-item">
-                    <strong>{a.site_name}</strong>
-                    <br />
-                    <span>{a.location}</span>
-                    <br />
-                    <small>{a.short_description}</small>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))
+              {day.items.length === 0 ? (
+                <p className="planner-empty">No attractions for this day.</p>
+              ) : (
+                <div className="planner-activity-list">
+                  {day.items.map((a) => (
+                    <div key={a._id} className="planner-activity">
+                      <div className="slot">
+                        {a.site_name}
+                      </div>
+                      <div className="place">
+                        {a.location && <span>📍 {a.location}</span>}
+                        {a.short_description && (
+                          <small>{a.short_description}</small>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

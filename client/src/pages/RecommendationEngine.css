@@ -1,6 +1,29 @@
+/* RecommendationEngine - Purple Professional Theme */
+
+:root {
+  /* Primary Colors */
+  --primary-purple: #2a1e4d;
+  --deep-purple: #030d2b;
+  --accent-purple: #5a4a8f;
+  
+  /* Background Colors */
+  --light-lavender: #e8e4f3;
+  --soft-lavender: #f5f3fb;
+  --glass-white: rgba(255, 255, 255, 0.85);
+  --cloud-lavender: #d4d0e3;
+  
+  /* Text Colors */
+  --ink: #1a1528;
+  --muted: #6b6484;
+  
+  /* Borders & Shadows */
+  --border: rgba(138, 118, 178, 0.3);
+  --card-shadow: 0 20px 45px rgba(42, 30, 77, 0.25);
+}
+
 .recommendation-engine-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  background: linear-gradient(180deg, var(--soft-lavender) 0%, #ffffff 100%);
   padding: 2rem 0;
 }
 
@@ -31,7 +54,7 @@
 .page-header h1 {
   font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -41,10 +64,28 @@
 
 .page-header p {
   font-size: 1.25rem;
-  color: #7f8c8d;
+  color: var(--muted);
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+/* User Welcome */
+.user-welcome {
+  color: var(--accent-purple);
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 12px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Error Banner */
@@ -55,10 +96,10 @@
   max-width: 1200px;
   margin: 2rem auto;
   padding: 1.5rem 2rem;
-  background: #fee;
-  border: 2px solid #fcc;
+  background: rgba(239, 68, 68, 0.08);
+  border: 2px solid rgba(239, 68, 68, 0.2);
   border-radius: 12px;
-  color: #c33;
+  color: #dc2626;
   font-weight: 500;
   animation: slideDown 0.3s ease;
 }
@@ -100,13 +141,13 @@
 .empty-state h3 {
   font-size: 2rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: var(--ink);
   margin-bottom: 1rem;
 }
 
 .empty-state p {
   font-size: 1.1rem;
-  color: #7f8c8d;
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -163,21 +204,5 @@
 
   .empty-state p {
     font-size: 1rem;
-  }
-}
-.user-welcome {
-  color: #667eea;
-  font-size: 16px;
-  font-weight: 500;
-  margin-top: 12px;
-  animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

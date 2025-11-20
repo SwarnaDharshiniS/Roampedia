@@ -14,7 +14,7 @@ import {
   Legend,
   RadialLinearScale,
 } from "chart.js";
-import { Pie, Bar, Line, Radar, Doughnut } from "react-chartjs-2";
+import { Pie, Bar, Line, Radar } from "react-chartjs-2";
 import "./UserProfile.css";
 
 // Register ChartJS components
@@ -35,7 +35,6 @@ const UserProfile = () => {
   const { user, updateProfile } = useAuth();
   const [stats, setStats] = useState(null);
   const [profileData, setProfileData] = useState(null);
-  const [itineraryStats, setItineraryStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
@@ -51,15 +50,13 @@ const UserProfile = () => {
   const fetchProfileData = async () => {
     try {
       setLoading(true);
-      const [statsRes, profileRes, itineraryStatsRes] = await Promise.all([
+      const [statsRes, profileRes] = await Promise.all([
         apiClient.get("/api/user-stats/stats"),
         apiClient.get("/api/user-stats/profile-data"),
-        apiClient.get("/api/itineraries/analytics/stats"),
       ]);
 
       setStats(statsRes.data);
       setProfileData(profileRes.data);
-      setItineraryStats(itineraryStatsRes.data);
       setFormData({
         firstName: profileRes.data.user.firstName || "",
         lastName: profileRes.data.user.lastName || "",
@@ -190,67 +187,6 @@ const UserProfile = () => {
     ],
   };
 
-  // Prepare chart data for itineraries
-  const itineraryExpenseData = itineraryStats
-    ? {
-        labels: Object.keys(itineraryStats.expenseBreakdown),
-        datasets: [
-          {
-            label: "Total Expenses by Category (USD)",
-            data: Object.values(itineraryStats.expenseBreakdown),
-            backgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56",
-              "#4BC0C0",
-              "#9966FF",
-            ],
-          },
-        ],
-      }
-    : null;
-
-  const itineraryDestinationData = itineraryStats
-    ? {
-        labels: Object.keys(itineraryStats.destinationBreakdown),
-        datasets: [
-          {
-            label: "Trips by Destination",
-            data: Object.values(itineraryStats.destinationBreakdown),
-            backgroundColor: "#10b981",
-          },
-        ],
-      }
-    : null;
-
-  const itineraryStatusData = itineraryStats
-    ? {
-        labels: Object.keys(itineraryStats.statusBreakdown),
-        datasets: [
-          {
-            label: "Itineraries by Status",
-            data: Object.values(itineraryStats.statusBreakdown),
-            backgroundColor: ["#06b6d4", "#f59e0b", "#10b981", "#ef4444", "#8b5cf6"],
-          },
-        ],
-      }
-    : null;
-
-  const itineraryMonthlyData = itineraryStats
-    ? {
-        labels: Object.keys(itineraryStats.monthlyDistribution),
-        datasets: [
-          {
-            label: "Trips per Month",
-            data: Object.values(itineraryStats.monthlyDistribution),
-            borderColor: "#10b981",
-            backgroundColor: "rgba(16, 185, 129, 0.2)",
-            tension: 0.4,
-          },
-        ],
-      }
-    : null;
-
   return (
     <div className="user-profile-container">
       <div className="profile-header">
@@ -318,7 +254,7 @@ const UserProfile = () => {
         </div>
       </div>
 
-      {/* Quick Stats - Updated with Itinerary Stats */}
+      {/* Quick Stats - Original 3 stats only */}
       <div className="stats-overview">
         <div className="stat-card">
           <div className="stat-number">{stats.visitedCount}</div>
@@ -332,15 +268,9 @@ const UserProfile = () => {
           <div className="stat-number">{stats.experiencesCount}</div>
           <div className="stat-label">Travel Experiences</div>
         </div>
-        <div className="stat-card">
-          <div className="stat-number">
-            {itineraryStats?.totalItineraries || 0}
-          </div>
-          <div className="stat-label">Planned Itineraries</div>
-        </div>
       </div>
 
-      {/* Travel Profile Summary */}
+      {/* Travel Profile Summary - Original without itinerary data */}
       <div className="travel-profile-card">
         <h2>Your Travel Profile</h2>
         <div className="travel-profile-grid">
@@ -356,153 +286,8 @@ const UserProfile = () => {
               {stats.travelProfile.favoriteThemes.join(", ") || "None yet"}
             </span>
           </div>
-          <div className="profile-item">
-            <span className="profile-label">Total Trip Days Planned:</span>
-            <span className="profile-value">
-              {itineraryStats?.totalTripDays || 0} days
-            </span>
-          </div>
-          <div className="profile-item">
-            <span className="profile-label">Total Budget Planned:</span>
-            <span className="profile-value">
-              ${itineraryStats?.totalBudget || 0}
-            </span>
-          </div>
         </div>
       </div>
-
-      {/* NEW: Itinerary Planning Statistics Section */}
-      {itineraryStats && itineraryStats.totalItineraries > 0 && (
-        <div className="itinerary-section">
-          <h2>🗺️ Trip Planning Analytics</h2>
-
-          <div className="itinerary-stats-cards">
-            <div className="stat-card-small">
-              <div className="stat-icon">✈️</div>
-              <div className="stat-content">
-                <div className="stat-value">
-                  {itineraryStats.totalItineraries}
-                </div>
-                <div className="stat-title">Total Itineraries</div>
-              </div>
-            </div>
-            <div className="stat-card-small">
-              <div className="stat-icon">📅</div>
-              <div className="stat-content">
-                <div className="stat-value">{itineraryStats.totalTripDays}</div>
-                <div className="stat-title">Total Days Planned</div>
-              </div>
-            </div>
-            <div className="stat-card-small">
-              <div className="stat-icon">💰</div>
-              <div className="stat-content">
-                <div className="stat-value">
-                  ${itineraryStats.totalBudget.toLocaleString()}
-                </div>
-                <div className="stat-title">Total Budget</div>
-              </div>
-            </div>
-            <div className="stat-card-small">
-              <div className="stat-icon">📊</div>
-              <div className="stat-content">
-                <div className="stat-value">
-                  ${itineraryStats.avgBudgetPerTrip}
-                </div>
-                <div className="stat-title">Avg Budget/Trip</div>
-              </div>
-            </div>
-            <div className="stat-card-small">
-              <div className="stat-icon">⏱️</div>
-              <div className="stat-content">
-                <div className="stat-value">
-                  {itineraryStats.avgTripDuration} days
-                </div>
-                <div className="stat-title">Avg Trip Duration</div>
-              </div>
-            </div>
-            <div className="stat-card-small">
-              <div className="stat-icon">🎯</div>
-              <div className="stat-content">
-                <div className="stat-value">{itineraryStats.upcomingTrips}</div>
-                <div className="stat-title">Upcoming Trips</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Itinerary Charts */}
-          <div className="charts-grid">
-            {/* Expense Breakdown */}
-            {itineraryExpenseData && (
-              <div className="chart-container">
-                <h3>💸 Total Expenses by Category</h3>
-                <Doughnut
-                  data={itineraryExpenseData}
-                  options={{
-                    maintainAspectRatio: true,
-                    plugins: {
-                      legend: { position: "bottom" },
-                    },
-                  }}
-                />
-              </div>
-            )}
-
-            {/* Destination Breakdown */}
-            {itineraryDestinationData && (
-              <div className="chart-container">
-                <h3>🌍 Trips by Destination</h3>
-                <Bar
-                  data={itineraryDestinationData}
-                  options={{
-                    maintainAspectRatio: true,
-                    scales: {
-                      y: {
-                        beginAtZero: true,
-                        ticks: { stepSize: 1 },
-                      },
-                    },
-                  }}
-                />
-              </div>
-            )}
-
-            {/* Status Breakdown */}
-            {itineraryStatusData && (
-              <div className="chart-container">
-                <h3>📋 Itineraries by Status</h3>
-                <Pie
-                  data={itineraryStatusData}
-                  options={{
-                    maintainAspectRatio: true,
-                    plugins: {
-                      legend: { position: "bottom" },
-                    },
-                  }}
-                />
-              </div>
-            )}
-
-            {/* Monthly Distribution */}
-            {itineraryMonthlyData && (
-              <div className="chart-container full-width">
-                <h3>📆 Trip Planning Timeline</h3>
-                <Line
-                  data={itineraryMonthlyData}
-                  options={{
-                    maintainAspectRatio: true,
-                    scales: {
-                      y: {
-                        beginAtZero: true,
-                        ticks: { stepSize: 1 },
-                      },
-                    },
-                  }}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      )}
 
       {/* Travel Experience Visualizations */}
       <div className="visualizations-section">
@@ -579,7 +364,7 @@ const UserProfile = () => {
         </div>
       </div>
 
-      {/* Download Reports Section - Updated */}
+      {/* Download Reports Section - Removed itinerary report button */}
       <div className="reports-section">
         <h2>📥 Download Your Travel Reports</h2>
         <div className="reports-grid">
@@ -600,12 +385,6 @@ const UserProfile = () => {
             onClick={() => handleDownloadReport("statistics")}
           >
             📈 Statistics Report PDF
-          </button>
-          <button
-            className="report-btn"
-            onClick={() => handleDownloadReport("itinerary-report")}
-          >
-            🗺️ Itinerary Planning Report PDF
           </button>
           <button className="report-btn" onClick={handleExportCSV}>
             📊 Countries CSV Export

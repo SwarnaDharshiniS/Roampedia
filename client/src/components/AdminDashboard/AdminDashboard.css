@@ -2,7 +2,7 @@
   max-width: 1600px;
   margin: 0 auto;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background: linear-gradient(135deg, #483d6d 0%, #0c183c 100%);
   min-height: 100vh;
 }
 
@@ -19,12 +19,12 @@
 .admin-header h1 {
   margin: 0 0 10px 0;
   font-size: 36px;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .admin-header p {
   margin: 0;
-  color: #7f8c8d;
+  color: #6b7280;
   font-size: 16px;
 }
 
@@ -58,12 +58,12 @@
 .stat-number {
   font-size: 42px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #1a3a52;
   margin-bottom: 8px;
 }
 
 .stat-label {
-  color: #7f8c8d;
+  color: #6b7280;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -80,7 +80,7 @@
 
 .admin-reports-section h2 {
   margin: 0 0 20px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .reports-grid {
@@ -90,7 +90,7 @@
 }
 
 .report-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #483d6d 0%, #0c183c 100%);
   color: white;
   border: none;
   padding: 15px 20px;
@@ -137,7 +137,7 @@
 
 .chart-container h3 {
   margin: 0 0 20px 0;
-  color: #2c3e50;
+  color: #1a3a52;
   font-size: 20px;
 }
 
@@ -152,7 +152,7 @@
 
 .top-countries-section h2 {
   margin: 0 0 25px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .top-countries-list {
@@ -166,7 +166,7 @@
   align-items: center;
   gap: 15px;
   padding: 15px;
-  background: #f8f9fa;
+  background: #e8f1f8;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -179,7 +179,7 @@
 .rank {
   font-size: 24px;
   font-weight: bold;
-  color: #4A90E2;
+  color: #5b9bd5;
   min-width: 40px;
 }
 
@@ -187,7 +187,7 @@
   flex: 1;
   font-size: 18px;
   font-weight: 500;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .rating {
@@ -198,7 +198,7 @@
 
 .count {
   font-size: 14px;
-  color: #7f8c8d;
+  color: #6b7280;
 }
 
 /* Recent Users Section */
@@ -213,7 +213,7 @@
 
 .recent-users-section h2 {
   margin: 0 0 25px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .users-table {
@@ -227,12 +227,12 @@
 }
 
 .users-table th {
-  background: #f8f9fa;
+  background: #e8f1f8;
   padding: 12px;
   text-align: left;
   font-weight: 600;
-  color: #2c3e50;
-  border-bottom: 2px solid #e0e0e0;
+  color: #1a3a52;
+  border-bottom: 2px solid #d4dfe8;
 }
 
 .users-table td {
@@ -242,7 +242,7 @@
 }
 
 .users-table tr:hover {
-  background: #f8f9fa;
+  background: #e8f1f8;
 }
 
 /* Wishlist Section */
@@ -256,7 +256,7 @@
 
 .wishlist-section h2 {
   margin: 0 0 25px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .wishlist-grid {
@@ -289,13 +289,13 @@
 .wishlist-name {
   font-size: 16px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #1a3a52;
   margin-bottom: 8px;
 }
 
 .wishlist-count {
   font-size: 14px;
-  color: #7f8c8d;
+  color: #6b7280;
 }
 
 /* Engagement Insights */
@@ -309,7 +309,7 @@
 
 .engagement-insights h2 {
   margin: 0 0 25px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .insights-grid {
@@ -319,11 +319,11 @@
 }
 
 .insight-card {
-  background: #f8f9fa;
+  background: #e8f1f8;
   border-radius: 12px;
   padding: 25px;
   text-align: center;
-  border-left: 4px solid #4A90E2;
+  border-left: 4px solid #5b9bd5;
   transition: all 0.3s ease;
 }
 
@@ -350,7 +350,7 @@
 .insight-card h3 {
   margin: 0 0 15px 0;
   font-size: 16px;
-  color: #7f8c8d;
+  color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -358,13 +358,13 @@
 .insight-value {
   font-size: 36px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #1a3a52;
   margin: 0 0 8px 0;
 }
 
 .insight-label {
   font-size: 14px;
-  color: #7f8c8d;
+  color: #6b7280;
   margin: 0;
 }
 

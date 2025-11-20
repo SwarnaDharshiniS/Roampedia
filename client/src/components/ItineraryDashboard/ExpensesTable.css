@@ -1,123 +1,169 @@
-/* =========================================================
-   ExpensesTable.css – Trip Budget Earthy Table
-   ========================================================= */
-
-.expenses-table {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #ffffff, #e0f2fe);
-  border-radius: 20px;
-  padding: 18px 18px 14px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
-  color: #111827;
+:root {
+  /* Primary Colors */
+  --primary-purple: #2a1e4d;
+  --deep-purple: #030d2b;
+  --accent-purple: #5a4a8f;
+  
+  /* Background Colors */
+  --light-lavender: #e8e4f3;
+  --soft-lavender: #f5f3fb;
+  --glass-white: rgba(255, 255, 255, 0.85);
+  --cloud-lavender: #d4d0e3;
+  
+  /* Text Colors */
+  --ink: #1a1528;
+  --muted: #6b6484;
+  
+  /* Borders & Shadows */
+  --border: rgba(138, 118, 178, 0.3);
+  --card-shadow: 0 20px 45px rgba(42, 30, 77, 0.25);
 }
 
-.expenses-table-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 10px;
+.planner-wrapper { 
+  margin-top: 10px; 
 }
 
-.expenses-table-title {
-  font-size: 0.94rem;
+.planner-title {
+  font-size: 26px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #1f2937;
+  color: var(--primary-purple);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
 }
 
-.expenses-table-total {
-  font-size: 0.86rem;
-  color: #16a34a;
+.planner-loading,
+.planner-empty {
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--soft-lavender);
+  border-radius: 12px;
 }
 
-/* Table */
-.expenses-table table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.86rem;
-}
-
-.expenses-table th,
-.expenses-table td {
-  padding: 8px 7px;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-  text-align: left;
-}
-
-.expenses-table th {
-  font-size: 0.78rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-/* Row striping */
-.expenses-table tbody tr:nth-child(odd) {
-  background: #f9fafb;
-}
-.expenses-table tbody tr:nth-child(even) {
-  background: #ffffff;
-}
-
-.expenses-table tbody tr:hover {
-  background: #e0f2fe;
-}
-
-/* Inputs */
-.expenses-table input[type="text"],
-.expenses-table input[type="number"] {
-  width: 100%;
-  padding: 6px 7px;
-  border-radius: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  box-sizing: border-box;
-  background: #ffffff;
-  font-size: 0.84rem;
-  outline: none;
-}
-
-.expenses-table input:focus {
-  border-color: #22c55e;
-  box-shadow: 0 0 0 2px rgba(187, 247, 208, 0.9);
-}
-
-/* Small inline button */
-.small {
-  background: rgba(254, 243, 199, 0.9);
-  border: 1px solid rgba(234, 179, 8, 0.9);
-  padding: 4px 8px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #92400e;
-}
-
-/* Total row */
-.total-row {
-  background: #dcfce7;
-  font-weight: 700;
-}
-
-/* Footer actions */
-.table-actions {
+/* Days container - spacing between day cards */
+.planner-days {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  flex-direction: column;
+  gap: 28px;
 }
 
-.save-btn {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.86rem;
+/* Each day card - clear divisions between days */
+.planner-day-card {
+  background: var(--glass-white);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.planner-day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 55px rgba(42, 30, 77, 0.3);
+}
+
+/* Day title styling */
+.planner-day-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-purple);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--cloud-lavender);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.planner-day-title span {
+  color: var(--accent-purple);
+  font-size: 24px;
+}
+
+/* Activities list - NO divisions between activities */
+.planner-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Individual activity - clean, no borders */
+.planner-activity {
+  padding: 14px 0;
+  transition: all 0.2s ease;
+}
+
+.planner-activity:hover {
+  transform: translateX(4px);
+}
+
+.planner-activity:hover .slot {
+  color: var(--accent-purple);
+}
+
+/* Activity site name */
+.planner-activity .slot {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 6px;
+  transition: color 0.2s ease;
+}
+
+/* Activity details */
+.planner-activity .place {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: 4px;
+}
+
+.planner-activity .place span {
+  display: block;
+  color: var(--accent-purple);
   font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.planner-activity .place small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Empty state for individual days */
+.planner-day-card .planner-empty {
+  background: var(--light-lavender);
+  margin: 0;
+  padding: 30px 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .planner-day-card {
+    padding: 20px;
+  }
+  
+  .planner-title {
+    font-size: 22px;
+  }
+  
+  .planner-day-title {
+    font-size: 19px;
+  }
+  
+  .planner-activity {
+    padding: 12px 0;
+  }
+  
+  .planner-activity .slot {
+    font-size: 16px;
+  }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./ExpensesTable.css";
 
 export default function ExpensesTable({ itineraryId }) {
   const [items, setItems] = useState([]);
@@ -76,6 +77,7 @@ export default function ExpensesTable({ itineraryId }) {
               <tr key={i}>
                 <td>
                   <input
+                    type="text"
                     value={e.category}
                     onChange={(ev) =>
                       updateItem(i, "category", ev.target.value)
@@ -95,6 +97,7 @@ export default function ExpensesTable({ itineraryId }) {
 
                 <td>
                   <input
+                    type="text"
                     value={e.notes}
                     onChange={(ev) =>
                       updateItem(i, "notes", ev.target.value)

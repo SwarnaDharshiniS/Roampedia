@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Calendar, Users, MapPin, DollarSign, ChevronDown } from "lucide-react";
-import apiClient from "../../utils/api";
-import { useAuth } from "../../contexts/AuthContext";
+import "./InputSection.css";
 
 // export default function InputSection()
 export default function InputSection({ onSubmit, initialValues }) {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { isAuthenticated } = useAuth();
+
   const [formData, setFormData] = useState({
     destination: "",
     homeCountry: "",
@@ -31,35 +30,16 @@ export default function InputSection({ onSubmit, initialValues }) {
   }, []);
 
   const fetchCountries = async () => {
-    // Since /api/countries endpoint doesn't exist, use a comprehensive list
-    const defaultCountries = [
-      "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia",
-      "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-      "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei",
-      "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-      "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica",
-      "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-      "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji",
-      "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala",
-      "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia",
-      "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya",
-      "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia",
-      "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives",
-      "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova",
-      "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
-      "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway",
-      "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
-      "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia",
-      "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
-      "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
-      "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname",
-      "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo",
-      "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
-      "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-      "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
-    ];
-    
-    setCountries(defaultCountries);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/countries`);
+      if (!res.ok) throw new Error("API error");
+
+      const data = await res.json();
+      setCountries(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error("Error fetching countries:", err);
+      setCountries(["India", "Japan", "Australia", "France", "Italy"]);
+    }
     setLoading(false);
   };
 
@@ -94,7 +74,7 @@ export default function InputSection({ onSubmit, initialValues }) {
           );
 
     const selectItem = (c) => {
-      setFormData((prev) => ({ ...prev, [name]: c })); // FIXED
+      setFormData((prev) => ({ ...prev, [name]: c }));
       setQuery(c);
       setOpen(false);
     };
@@ -199,20 +179,24 @@ export default function InputSection({ onSubmit, initialValues }) {
     if (!validateForm()) return;
 
     try {
-        // Use apiClient for authenticated requests
-        const res = await apiClient.post("/api/itinerary", formData);
-        const saved = res.data;
-        
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/itinerary`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+        });
+
+        const saved = await res.json();
         console.log("Saved itinerary ID:", saved._id);
+
+        if (res.ok) {
         console.log("Saved:", saved);
         onSubmit(saved);
-    } catch (err) {
-        console.error("Error saving itinerary:", err);
-        if (err.response?.status === 401) {
-          alert("Please login to save your itinerary");
         } else {
-          alert(err.response?.data?.error || "Failed to save itinerary");
+        alert("Failed to save itinerary");
         }
+    } catch (err) {
+        console.error(err);
+        alert("Backend error");
     }
     };
 
@@ -220,7 +204,7 @@ export default function InputSection({ onSubmit, initialValues }) {
   // UI
   // ======================
   return (
-    <div className="card-shell">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-10 px-5">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-xl p-8">
 
         <h1 className="text-3xl font-bold text-gray-900 mb-1">
@@ -395,7 +379,7 @@ export default function InputSection({ onSubmit, initialValues }) {
           {/* SUBMIT */}
           <button
             type="submit"
-            className="btn-primary"
+            className="w-full bg-indigo-600 text-white py-4 rounded-lg font-semibold hover:bg-indigo-700"
           >
             Generate My Itinerary
           </button>

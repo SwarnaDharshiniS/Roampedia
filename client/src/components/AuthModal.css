@@ -99,7 +99,7 @@
 
 .auth-view-btn.active {
   background: white;
-  color: #3aafa9;
+  color: #5b9bd5;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -107,7 +107,7 @@
 .auth-form h2 {
   font-size: 28px;
   font-weight: 700;
-  color: #1f2933;
+  color: #1a3a52;
   margin: 0 0 8px 0;
 }
 
@@ -132,7 +132,7 @@
 .auth-form-group input {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid #e3ecef;
+  border: 2px solid #d4dfe8;
   border-radius: 8px;
   font-size: 15px;
   transition: all 0.2s;
@@ -141,8 +141,8 @@
 
 .auth-form-group input:focus {
   outline: none;
-  border-color: #3aafa9;
-  box-shadow: 0 0 0 3px rgba(58, 175, 169, 0.1);
+  border-color: #25224f;
+  box-shadow: 0 0 0 3px rgba(91, 155, 213, 0.1);
 }
 
 .auth-form-row {
@@ -156,7 +156,7 @@
 .auth-submit-btn {
   width: 100%;
   padding: 14px 24px;
-  background: linear-gradient(135deg, #3aafa9 0%, #2b7a78 100%);
+  background: linear-gradient(135deg, #2a1e4d 0%, #030d2b 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -169,7 +169,7 @@
 
 .auth-submit-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(58, 175, 169, 0.3);
+  box-shadow: 0 4px 12px rgba(91, 155, 213, 0.3);
 }
 
 .auth-submit-btn:active:not(:disabled) {

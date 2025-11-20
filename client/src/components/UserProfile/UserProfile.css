@@ -26,7 +26,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg,  #483d6d 0%, #0c183c 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -43,11 +43,11 @@
 .profile-info h1 {
   margin: 0 0 10px 0;
   font-size: 32px;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .profile-email {
-  color: #7f8c8d;
+  color: #6b7280;
   font-size: 16px;
   margin: 5px 0;
 }
@@ -59,7 +59,7 @@
 }
 
 .btn-edit {
-  background: #4A90E2;
+  background: #2a1e4d;
   color: white;
   border: none;
   padding: 10px 24px;
@@ -70,7 +70,7 @@
 }
 
 .btn-edit:hover {
-  background: #357abd;
+  background: #2c5f8d;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
@@ -85,7 +85,7 @@
 
 .profile-edit-form input {
   padding: 12px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid #d4dfe8;
   border-radius: 8px;
   font-size: 16px;
   transition: border-color 0.3s ease;
@@ -93,7 +93,7 @@
 
 .profile-edit-form input:focus {
   outline: none;
-  border-color: #4A90E2;
+  border-color: #2a1e4d;
 }
 
 .edit-buttons {
@@ -153,12 +153,12 @@
 .stat-number {
   font-size: 48px;
   font-weight: bold;
-  color: #4A90E2;
+  color: #5b9bd5;
   margin-bottom: 10px;
 }
 
 .stat-label {
-  color: #7f8c8d;
+  color: #6b7280;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -175,7 +175,7 @@
 
 .travel-profile-card h2 {
   margin: 0 0 20px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .travel-profile-grid {
@@ -192,7 +192,7 @@
 
 .profile-label {
   font-weight: 600;
-  color: #7f8c8d;
+  color: #6b7280;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -200,7 +200,7 @@
 
 .profile-value {
   font-size: 18px;
-  color: #2c3e50;
+  color: #1a3a52;
   font-weight: 500;
 }
 
@@ -210,7 +210,7 @@
 }
 
 .visualizations-section h2 {
-  color: #2c3e50;
+  color: #1a3a52;
   margin-bottom: 20px;
 }
 
@@ -233,7 +233,7 @@
 
 .chart-container h3 {
   margin: 0 0 20px 0;
-  color: #2c3e50;
+  color: #1a3a52;
   font-size: 20px;
 }
 
@@ -248,7 +248,7 @@
 
 .reports-section h2 {
   margin: 0 0 20px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .reports-grid {
@@ -258,7 +258,7 @@
 }
 
 .report-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2a1e4d 0%, #030d2b 100%);
   color: white;
   border: none;
   padding: 15px 20px;
@@ -289,7 +289,7 @@
 
 .countries-section h2 {
   margin: 0 0 25px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .countries-grid {
@@ -299,7 +299,7 @@
 }
 
 .country-card {
-  background: #f8f9fa;
+  background: #e8f1f8;
   border-radius: 12px;
   padding: 15px;
   display: flex;
@@ -313,7 +313,7 @@
 .country-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  border-color: #4A90E2;
+  border-color: #192347;
 }
 
 .country-card.wishlist {
@@ -333,13 +333,13 @@
 .country-info h4 {
   margin: 0 0 5px 0;
   font-size: 16px;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .country-info p {
   margin: 5px 0;
   font-size: 14px;
-  color: #7f8c8d;
+  color: #6b7280;
 }
 
 .visit-date, .added-date {
@@ -358,7 +358,7 @@
 
 .experiences-section h2 {
   margin: 0 0 25px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .experiences-list {
@@ -368,10 +368,10 @@
 }
 
 .experience-card {
-  background: #f8f9fa;
+  background: #e8f1f8;
   border-radius: 12px;
   padding: 20px;
-  border-left: 4px solid #4A90E2;
+  border-left: 4px solid #26235e;
   transition: all 0.3s ease;
 }
 
@@ -389,13 +389,13 @@
 
 .experience-header h3 {
   margin: 0;
-  color: #2c3e50;
+  color: #1a3a52;
   font-size: 20px;
 }
 
 .experience-rating {
   background: #ffd700;
-  color: #2c3e50;
+  color: #1a3a52;
   padding: 5px 12px;
   border-radius: 20px;
   font-weight: bold;
@@ -417,12 +417,12 @@
 }
 
 .experience-themes {
-  color: #4A90E2;
+  color: #5b9bd5;
   font-weight: 500;
 }
 
 .experience-dates {
-  color: #7f8c8d;
+  color: #6b7280;
 }
 
 /* Top Rated Section */
@@ -436,7 +436,7 @@
 
 .top-rated-section h2 {
   margin: 0 0 25px 0;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .top-rated-list {
@@ -450,7 +450,7 @@
   align-items: center;
   gap: 15px;
   padding: 15px;
-  background: #f8f9fa;
+  background: #e8f1f8;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -463,7 +463,7 @@
 .rank {
   font-size: 24px;
   font-weight: bold;
-  color: #4A90E2;
+  color: #5b9bd5;
   min-width: 40px;
 }
 
@@ -471,7 +471,7 @@
   flex: 1;
   font-size: 18px;
   font-weight: 500;
-  color: #2c3e50;
+  color: #1a3a52;
 }
 
 .rating {
@@ -482,7 +482,7 @@
 
 .count {
   font-size: 14px;
-  color: #7f8c8d;
+  color: #6b7280;
 }
 
 /* Loading & Error States */
@@ -492,7 +492,7 @@
   align-items: center;
   min-height: 400px;
   font-size: 20px;
-  color: #7f8c8d;
+  color: #6b7280;
 }
 
 /* Responsive Design */
