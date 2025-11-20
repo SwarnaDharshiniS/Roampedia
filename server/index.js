@@ -5,7 +5,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import listsRouter from "./routes/lists.js";
 import travelNotesRoutes from "./routes/travelNotesRoutes.js";
-import experienceRoutes from "./routes/experienceRoutes.js";
+import experienceRoutes from "./routes/ExperienceRoutes.js";
 import expensesRoutes from "./routes/expensesRoutes.js";
 import recommendationRoutes from "./routes/recommendationRoutes.js";
 import aiRecommendationRoutes from "./routes/aiRecommendationRoutes.js";
