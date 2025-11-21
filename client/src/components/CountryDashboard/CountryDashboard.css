@@ -1039,7 +1039,7 @@
   margin: 0 0 12px 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #8b7ec8;
+  color: #0d062e;
 }
 
 .experience-card {
@@ -1063,7 +1063,7 @@
 .experience-card p {
   margin: 6px 0;
   font-size: 0.88rem;
-  color: var(--soft-lavender);
+  color: rgba(61, 46, 107, 0.3);
   word-wrap: break-word;
   line-height: 1.4;
 }
